@@ -77,8 +77,8 @@ empBayes <- function(reference, before, after,
   step_mod <- MASS::stepAIC(init_mod, scope = scope, trace = FALSE, direction='both')
 
   # use reference model to calculate expected values for before and after data
-  before$Expected <- predict(step_mod, newdata = before)
-  after$Expected <- predict(step_mod, newdata = after)
+  before$Expected <- predict(step_mod, newdata = before,type="response")
+  after$Expected <- predict(step_mod, newdata = after,type="response")
 
   # treatment # crashes before
   tb <- sum(before[, depVar])
@@ -101,8 +101,8 @@ empBayes <- function(reference, before, after,
   var_N_exp_ta <- N_exp_ta*(eb_ratio)*(1-weight)
 
   lamda <- ta
-  cmf <- (lamda/N_exp_ta)/(1+var_N_exp_ta/var_N_exp_ta**2)
-  cmf_var<-cmf**2*((1/N_exp_ta)+(var_N_exp_ta/N_exp_ta**2))/(1+var_N_exp_ta/N_exp_ta**2)**2
+  cmf <- (lamda/N_exp_ta)/(1+var_N_exp_ta/N_exp_ta**2)
+  cmf_var<-cmf**2*((1/lamda)+(var_N_exp_ta/N_exp_ta**2))/(1+var_N_exp_ta/N_exp_ta**2)**2
 
   # calculate standard error of crash reduction index
   cmf_se<-sqrt(cmf_var)
