@@ -58,7 +58,7 @@ CompGroup<-function(compBefore,compAfter, before, after, depVar, alpha = 0.95){
   #var_N_exp_ta<-N_exp_ta**2*(1/tb+1/cb+1/ca)
 
   lamda<-sum(ta)
-  cmf<-(lamda/N_exp_ta)/(1+var_N_exp_ta/var_N_exp_ta**2)
+  cmf<-(lamda/N_exp_ta)/(1+var_N_exp_ta/N_exp_ta**2)
   cmf_var<-cmf**2*((1/N_exp_ta)+(var_N_exp_ta/N_exp_ta**2))/(1+var_N_exp_ta/N_exp_ta**2)**2
 
   ## Calculate Standard Error of Crash Reduction Index
