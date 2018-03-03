@@ -87,7 +87,7 @@ CompGroup<-function(compBefore,compAfter, before, after, depVar, alpha = 0.95){
     "cmf" = cmf,
     "cmf_variance" = cmf_var,
     "cmf_se" = cmf_se,
-    "cmf_ci" = c('Lower' = cmf_lower,'Upper' = cmf_upper, 'alpha' = alpha)
+    "cmf_ci" = c('Lower' = cmf_lower,'Upper' = cmf_upper, 'alpha' = alpha*2)
   ))
 }
 
